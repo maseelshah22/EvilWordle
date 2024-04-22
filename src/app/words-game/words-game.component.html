@@ -1,0 +1,23 @@
+<div [ngStyle]="{'background-color': 'lightsteelblue', 'height': '100%' }">
+    <h2>Guess the Word!</h2>
+
+    <input [ngStyle]="{'background-color': 'aliceblue' }" type="text" [class]="formClass" [(ngModel)]="curGuess" placeholder="Enter your guess here"
+        [disabled]="overStatus == true" required>
+    <br>
+    <br>
+    <button [ngStyle]="{'margin-bottom': '.5rem'}"[class]="buttonSubmitClass" (click)="submitGuess()" [disabled]="curGuess.length == 0"
+        [disabled]="overStatus == true">Guess</button>
+    <br>
+
+    <button [class]="newGameButtonClass" (click)="setUp()">Start New Game</button>
+    <br>
+    <br>
+    <div [class]="gHistClass" *ngIf="guessHistory.length >0">
+        <h3 [class]="gHistClass">Guess History</h3>
+        <ul [class]="gHistClass" [ngStyle]="{'color':'green', 'height': '100%' }">
+            <ul [class]="gHistClass" *ngFor="let g of guessHistory">{{ g }}</ul>
+        </ul>
+    </div>
+
+
+</div>
