@@ -3,7 +3,8 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$wordlink = 'https://cs4640.cs.virginia.edu/homework/cs4640-wordlist.txt'; //'wordlist.txt';
+$wordlink = '/var/www/html/homework/cs4640-wordlist.txt'; 
+//'https://cs4640.cs.virginia.edu/homework/cs4640-wordlist.txt'; //'wordlist.txt';
 
 // echo $wordlink;
 header("Access-Control-Allow-Origin: http://localhost:4200");

@@ -31,26 +31,29 @@ export class WordsGameComponent {
     // this is the ajax query
 
     this.http
-      .get('http://localhost:8080/hw8/wordle_api.php')
+      .get('https://cs4640.cs.virginia.edu/dda5us/hw8/wordle_api.php')
       .subscribe((randomWord: any) => {
         this.word = randomWord['word'];
-        console.log('the word is', this.word);
+        // console.log('the word is', this.word);
+
+        for (let i = 0; i < this.word.length; i++) {
+          if (this.wordCharCount.has(this.word[i])) {
+            this.wordCharCount.set(
+              this.word[i],
+              this.wordCharCount.get(this.word[i]) + 1
+            );
+          } else {
+            this.wordCharCount.set(this.word[i], 1);
+          }
+        }
+
       });
 
     this.guessHistory = [];
     this.curGuess = '';
     this.overStatus = false;
 
-    for (let i = 0; i < this.word.length; i++) {
-      if (this.wordCharCount.has(this.word[i])) {
-        this.wordCharCount.set(
-          this.word[i],
-          this.wordCharCount.get(this.word[i]) + 1
-        );
-      } else {
-        this.wordCharCount.set(this.word[i], 1);
-      }
-    }
+  
   }
 
   submitGuess() {
@@ -73,14 +76,16 @@ export class WordsGameComponent {
     } else {
       history_input = 'Guess: ' + this.curGuess;
 
+      // console.log('wordCharCount', this.wordCharCount);
       for (let i = 0; i < this.curGuess.length; i++) {
         let character = this.curGuess[i];
 
         if (this.wordCharCount.has(character)) {
           sameLetterCount += 1;
+          // console.log('sameLetterCount-enter', character,sameLetterCount);
         }
       }
-      console.log('sameLetterCount', sameLetterCount);
+    //  console.log('sameLetterCount', sameLetterCount);
 
       history_input +=
         '  ~ # of Guessed Characters in Word (not unique): ' + sameLetterCount;
@@ -120,9 +125,9 @@ export class WordsGameComponent {
       }
 
       this.guessHistory.push(history_input);
-      console.log('guess', this.curGuess);
-      console.log('wordlength', this.word.length);
-      console.log('correctPos', correctPostion);
+      // console.log('guess', this.curGuess);
+      // console.log('wordlength', this.word.length);
+      // console.log('correctPos', correctPostion);
 
       //correctPostion = 0;
     }
