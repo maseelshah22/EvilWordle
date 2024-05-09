@@ -13,6 +13,8 @@ Along with angular, PHP was used to read a JSON file and output a random word to
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 You may also need to set up a server in order to run the php file that generates the random word.
 
+You can also play [here](https://cs4640.cs.virginia.edu/dda5us/hw8/)
+
 ## Author ✍️
 
 Maseel Shah
