@@ -1,5 +1,4 @@
-# Evil Wordle
-
+# Evil Wordle 🟩 🟨 🟩
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
 Along with angular, PHP was used to read a JSON file and output a random word to be guessed in the game. 
 
